@@ -8,9 +8,9 @@ const Map = ({ centers, selectCenter }) => {
   const [lng, updateLng] = useState(-104.9903);
   const [zoom, updateZoom] = useState(13);
 
-  // let centersList = centers.map((center, index) => {
-  //   return <Pin center={center} lat={center.lat} lng={center.lng} text="My Marker" key={index} selectCenter={selectCenter} />
-  // });
+  let centersList = centers.map((center, index) => {
+    return <Pin center={center} lat={center.lat} lng={center.lng} text="My Marker" key={index} selectCenter={selectCenter} />
+  });
 
   return (
     <div className="Map_container">
@@ -22,7 +22,7 @@ const Map = ({ centers, selectCenter }) => {
         }}
         defaultZoom={zoom}
       >
-        {/* { centersList } */}
+        { centersList }
       </GoogleMapReact>
     </div>
   )

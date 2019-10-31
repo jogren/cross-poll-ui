@@ -22,13 +22,13 @@ const App = () => {
   }, []);
 
 
-  console.log(centers)
+  console.log(reliefCenter)
   return (
     <main className="App">
       <CurrentCenterContext.Provider value={{ reliefCenter, setreliefCenter }}>
-        <Header />
+        <Header selectCenter={selectCenter}/>
         {!isCenterSelected ? 
-          <Map centers={centers}/>
+          <Map centers={centers} selectCenter={selectCenter}/>
         :
           <CenterDetails />
         }
