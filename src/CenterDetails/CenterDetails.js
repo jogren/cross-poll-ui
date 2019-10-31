@@ -3,12 +3,12 @@ import { getCenterStats } from '../apiCalls/apiCalls';
 import './CenterDetails.css';
 
 const CenterDetails = () => {
+  const [searchLovedOne, setSearchLovedOne] = useState("")
+  const [inDemandItems, setInDemandItems] = useState({})
 
   const fetchCenterStats = async () => {
-    const response = await getCenterStats();
-    console.log(response)
-    const data = await response.json()
-    console.log(data)
+    const data = await getCenterStats();
+    setInDemandItems(data)
   }
 
   useEffect(() => {
@@ -16,9 +16,20 @@ const CenterDetails = () => {
   }, []);
 
 
+  console.log(inDemandItems)
   return(
     <section>
       <h1>Center Details</h1>
+      <form>
+        <label>
+          <input 
+            type="text"
+            name="searchLovedOne"
+            value={searchLovedOne}
+            onChange={(e) => setSearchLovedOne(e.target.value)}
+          />
+        </label>
+      </form>
     </section>
   )
 }
