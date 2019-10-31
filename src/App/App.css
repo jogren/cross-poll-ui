@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  background-color: #6C782A;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
