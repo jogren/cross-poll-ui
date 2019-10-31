@@ -1,3 +1,17 @@
+# Production & Codebase
+
+You can view the Github repos as well as see the app in production here:
+
+[Front end GitHub](https://github.com/ktsune/safe-space-fe)
+
+[Front end (public-facing) GitHub](https://github.com/jogren/cross-poll-ui)
+
+[Back end GitHub](https://github.com/Jake0Miller/safe-space-be)
+
+[Front end Heroku](https://safe-space-fe.herokuapp.com/)
+
+[Back end Heroku](https://safe-space-be.herokuapp.com/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
