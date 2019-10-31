@@ -25,8 +25,8 @@ export const getCenters = async () => {
   }
 } 
 
-export const getCenterStats = async () => {
-  let url = `https://safe-space-be.herokuapp.com/api/v1/demand/1`
+export const getCenterStats = async (centerId) => {
+  let url = `https://safe-space-be.herokuapp.com/api/v1/demand/${centerId}`
 
   try {
     let resp = await fetch(url);
@@ -36,7 +36,6 @@ export const getCenterStats = async () => {
     }
 
     let data = await resp.json();
-    console.log(data)
     return data
 
   } catch (error) {
