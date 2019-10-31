@@ -1,0 +1,33 @@
+.CenterDetails_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-item-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.submit-new-item {
+  background-color: #6C782A;
+  height: 50px;
+}
+ .plus-img {
+   height: 30px;
+ }
+
+ .CenterDetails_items {
+   border: 1px solid black;
+   width: 70%;
+ }
+
+ .item-container {
+   display: flex;
+   justify-content: space-between;
+   padding: 0px 15%;
+ }

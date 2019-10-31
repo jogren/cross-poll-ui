@@ -1,0 +1,37 @@
+.Pin_img {
+  height: 20px;
+  width: 20px;
+  transition: all .2s ease-in-out;
+}
+
+.pin-hover {
+  padding: 10px;
+  background-color: black;
+  opacity: 0.8;
+  position: absolute;
+  z-index: 99;  
+  border:2px rounded #456879;
+	border-radius:10px;
+  height: 90px;
+  width: 220px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  cursor: pointer; 
+}
+
+.relief-center-img {
+  width: 60px; 
+  height: 60px;  
+  margin-right: 10px;
+}
+
+.pin-hover p {
+  color: white;
+}
+
+.pin-title {
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+}

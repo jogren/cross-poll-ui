@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { getCenterStats } from '../apiCalls/apiCalls';
+import React, { useState, useEffect, useContext } from 'react';
+import { getCenterStats, searchForVisitors } from '../apiCalls/apiCalls';
+import { CurrentCenterContext } from '../Contexts/CurrentCenterContext';
 import './CenterDetails.css';
 
 const CenterDetails = () => {
   const [searchLovedOne, setSearchLovedOne] = useState("")
   const [inDemandItems, setInDemandItems] = useState({})
+  const { reliefCenter, setreliefCenter } = useContext(CurrentCenterContext);
 
   const fetchCenterStats = async () => {
     const data = await getCenterStats();
@@ -15,21 +17,66 @@ const CenterDetails = () => {
     fetchCenterStats();
   }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let visitors = await searchForVisitors(reliefCenter.id)
+    console.log(visitors)
+    setSearchLovedOne("")
+  }
 
-  console.log(inDemandItems)
+  if (inDemandItems.consumable) {
+    console.log(inDemandItems.consumable)
+    let consumableKeys = Object.keys(inDemandItems.consumable)
+    console.log(consumableKeys)
+    let nonConsumableKeys = Object.keys(inDemandItems.non_consumable)
+
+    var consumableList = consumableKeys.map((supply, index) => {
+      return <div key={index} className="item-container">
+        <p>{supply}</p>
+        <p>{inDemandItems.consumable[supply].days_remaining}</p>
+      </div>
+    })
+    var nonConsumableList = nonConsumableKeys.map((supply, index) => {
+      return <div key={index} className="item-container">
+        <p>{supply}</p>
+        <p>{inDemandItems.non_consumable[supply].on_hand}</p>
+      </div>
+    })
+  }
+
+
   return(
-    <section>
-      <h1>Center Details</h1>
+    <section className="CenterDetails_section">
+      <h1>{reliefCenter.name}</h1>
       <form>
-        <label>
-          <input 
-            type="text"
-            name="searchLovedOne"
-            value={searchLovedOne}
-            onChange={(e) => setSearchLovedOne(e.target.value)}
-          />
+        <label>Search for a Loved one:
+          <div className="add-item-container">
+            <input 
+              type="text"
+              name="searchLovedOne"
+              placeholder="Enter name here..."
+              value={searchLovedOne}
+              onChange={(e) => setSearchLovedOne(e.target.value)}
+            />
+            <button className="submit-new-item" type="submit" onClick={handleSubmit}>
+              <img
+                className="plus-img"
+                alt="plus symbol"
+                src={require("../assets/plus-sign.svg")}
+              />
+            </button>
+          </div>
         </label>
       </form>
+      <section className="CenterDetails_items">
+        <div className="item-container">
+          <p>Item</p>
+          <p>Days Remaining</p>
+        </div>
+        { consumableList }
+        { nonConsumableList }
+
+      </section>
     </section>
   )
 }

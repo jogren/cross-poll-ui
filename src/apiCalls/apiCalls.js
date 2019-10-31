@@ -43,3 +43,29 @@ export const getCenterStats = async () => {
     throw error
   }
 } 
+
+export const searchForVisitors = async centerId => {
+  let options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  let queryParams = `query {publicUsersAtCenter(centerId: ${centerId}) {id name}}`;
+
+  let url = `https://safe-space-be.herokuapp.com/graphql?query=${queryParams}`;
+
+  try {
+    let resp = await fetch(url, options);
+
+    if (!resp.ok) {
+      throw new Error("There was an error getting the visitors");
+    }
+
+    let data = await resp.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
