@@ -11,23 +11,40 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .submit-new-item {
   background-color: #6C782A;
   height: 50px;
 }
- .plus-img {
-   height: 30px;
- }
 
- .CenterDetails_items {
-   border: 1px solid black;
-   width: 70%;
- }
+.plus-img {
+  height: 30px;
+}
 
- .item-container {
-   display: flex;
-   justify-content: space-between;
-   padding: 0px 15%;
- }
+.CenterDetails_items {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+  width: 70%;
+}
+
+.consumable-items-header,
+.nonConsumable-items-header,
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 15%;
+}
+
+.consumable-items-container,
+.consumable-item-container {
+  width: 40%;
+}
+
+.consumable-items-header p,
+.nonConsumable-items-header p {
+  font-size: 18px;
+  font-weight: bold;
+}

@@ -33,7 +33,7 @@ const CenterDetails = () => {
     var consumableList = consumableKeys.map((supply, index) => {
       return <div key={index} className="item-container">
         <p>{supply}</p>
-        <p>{inDemandItems.consumable[supply].days_remaining}</p>
+        <p>{Math.round(inDemandItems.consumable[supply].days_remaining)}</p>
       </div>
     })
     var nonConsumableList = nonConsumableKeys.map((supply, index) => {
@@ -69,13 +69,20 @@ const CenterDetails = () => {
         </label>
       </form>
       <section className="CenterDetails_items">
-        <div className="item-container">
-          <p>Item</p>
-          <p>Days Remaining</p>
+        <div className="consumable-items-container">
+          <div className="consumable-items-header">
+            <p>Item</p>
+            <p>Days Remaining</p>
+          </div>
+          { consumableList }
         </div>
-        { consumableList }
-        { nonConsumableList }
-
+        <div className="consumable-item-container">
+          <div className="nonConsumable-items-header">
+            <p>Item</p>
+            <p>On Hand</p>
+          </div>
+          { nonConsumableList }
+        </div>
       </section>
     </section>
   )
