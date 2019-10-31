@@ -22,7 +22,6 @@ const CenterDetails = () => {
     e.preventDefault();
     let visitors = await searchForVisitors(reliefCenter.id);
     let targetUser = visitors.find(visitor => visitor.name.toLowerCase() === searchLovedOne.toLowerCase());
-    console.log(targetUser)
     if(targetUser) {
       setFoundLovedOne(targetUser)
     } else {
