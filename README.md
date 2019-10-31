@@ -1,4 +1,3 @@
-# README
 # Safe Space
 
 Safe Space is a disaster relief app that is used to check in disaster survivors, and keep an up-to-date status of the disaster relief center (number of people at the center, inventory of supplies, and list of top necessities, for example water, blankets, food, etc.)
@@ -83,14 +82,13 @@ and click on `New Pull Request`
 ## Contributors
 
 - Ann Cerveny
-- Jacob Ogren
+- [Jacob Ogren] (https://github.com/jogren/)
 - [Jake Miller](https://github.com/Jake0Miller)
 - Sarah Tatro
 
 ## Tech Stack List
 
 - React
-- Redux
 - GraphQL
 - JavaScript (ES6+)
 - SASS/SCSS
