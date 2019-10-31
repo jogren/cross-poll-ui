@@ -10,7 +10,7 @@ const CenterDetails = () => {
   const { reliefCenter, setreliefCenter } = useContext(CurrentCenterContext);
 
   const fetchCenterStats = async () => {
-    const data = await getCenterStats();
+    const data = await getCenterStats(reliefCenter.id);
     setInDemandItems(data)
   }
 
@@ -43,7 +43,7 @@ const CenterDetails = () => {
     var consumableList = consumableKeys.map((supply, index) => {
       return <div key={index} className="new-item">
         <p>{supply}</p>
-        <p>{Math.round(inDemandItems.consumable[supply].days_remaining)}</p>
+        <p>{inDemandItems.consumable[supply].days_remaining}</p>
       </div>
     })
     var nonConsumableList = nonConsumableKeys.map((supply, index) => {

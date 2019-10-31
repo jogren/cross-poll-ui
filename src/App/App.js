@@ -14,6 +14,7 @@ const App = () => {
 
   const fetchCenters = async () => {
     const allCenters = await getCenters();
+    console.log(allCenters)
     setCenters(allCenters)
   }
 

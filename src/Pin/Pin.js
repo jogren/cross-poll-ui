@@ -24,7 +24,7 @@ const Pin = ({ center, selectCenter }) => {
   } else {
     return (
       <div className='pin-hover' onMouseLeave={handleHover}>
-        <img className="relief-center-img" src={'https://oceanservice.noaa.gov/hazards/drc/drc.jpg'} alt="hello" />
+        <img className="relief-center-img" src={'https://oceanservice.noaa.gov/hazards/drc/drc.jpg'} alt="relief_image" />
         <div onClick={handleSelectCenter}>
           <p className="pin-title">{reliefCenter.name}</p>
           <p>Phone: 720-521-1234</p>
