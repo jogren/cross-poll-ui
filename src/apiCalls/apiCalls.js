@@ -52,7 +52,7 @@ export const searchForVisitors = async centerId => {
     }
   };
 
-  let queryParams = `query {publicUsersAtCenter(centerId: ${centerId}) {id name}}`;
+  let queryParams = `query {publicUsers {id name center {id name addressPrint}}}`;
 
   let url = `https://safe-space-be.herokuapp.com/graphql?query=${queryParams}`;
 
@@ -64,7 +64,7 @@ export const searchForVisitors = async centerId => {
     }
 
     let data = await resp.json();
-    return data;
+    return data.data.publicUsers;
   } catch (error) {
     throw error;
   }

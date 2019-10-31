@@ -4,8 +4,9 @@ import { CurrentCenterContext } from '../Contexts/CurrentCenterContext';
 import './CenterDetails.css';
 
 const CenterDetails = () => {
-  const [searchLovedOne, setSearchLovedOne] = useState("")
-  const [inDemandItems, setInDemandItems] = useState({})
+  const [searchLovedOne, setSearchLovedOne] = useState("");
+  const [foundLovedOne, setFoundLovedOne] = useState("");
+  const [inDemandItems, setInDemandItems] = useState({});
   const { reliefCenter, setreliefCenter } = useContext(CurrentCenterContext);
 
   const fetchCenterStats = async () => {
@@ -19,25 +20,34 @@ const CenterDetails = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let visitors = await searchForVisitors(reliefCenter.id)
-    console.log(visitors)
+    let visitors = await searchForVisitors(reliefCenter.id);
+    let targetUser = visitors.find(visitor => visitor.name.toLowerCase() === searchLovedOne.toLowerCase());
+    console.log(targetUser)
+    if(targetUser) {
+      setFoundLovedOne(targetUser)
+    } else {
+      setFoundLovedOne('not found')
+    }
     setSearchLovedOne("")
   }
 
+  const handleSearch = (e) => {
+    setSearchLovedOne(e.target.value)
+    setFoundLovedOne("")
+  }
+
   if (inDemandItems.consumable) {
-    console.log(inDemandItems.consumable)
     let consumableKeys = Object.keys(inDemandItems.consumable)
-    console.log(consumableKeys)
     let nonConsumableKeys = Object.keys(inDemandItems.non_consumable)
 
     var consumableList = consumableKeys.map((supply, index) => {
-      return <div key={index} className="item-container">
+      return <div key={index} className="new-item">
         <p>{supply}</p>
         <p>{Math.round(inDemandItems.consumable[supply].days_remaining)}</p>
       </div>
     })
     var nonConsumableList = nonConsumableKeys.map((supply, index) => {
-      return <div key={index} className="item-container">
+      return <div key={index} className="new-item">
         <p>{supply}</p>
         <p>{inDemandItems.non_consumable[supply].on_hand}</p>
       </div>
@@ -56,9 +66,9 @@ const CenterDetails = () => {
               name="searchLovedOne"
               placeholder="Enter name here..."
               value={searchLovedOne}
-              onChange={(e) => setSearchLovedOne(e.target.value)}
+              onChange={handleSearch}
             />
-            <button className="submit-new-item" type="submit" onClick={handleSubmit}>
+            <button disabled={!searchLovedOne} className="submit-new-item" type="submit" onClick={handleSubmit}>
               <img
                 className="plus-img"
                 alt="plus symbol"
@@ -84,6 +94,8 @@ const CenterDetails = () => {
           { nonConsumableList }
         </div>
       </section>
+      {foundLovedOne.id && <p>{foundLovedOne.name} is currently a visitor at {foundLovedOne.center.name} at {foundLovedOne.center.addressPrint}</p> }
+      {foundLovedOne === 'not found' && <p>Unfortunately he don't have that name in our database.'</p>}
     </section>
   )
 }

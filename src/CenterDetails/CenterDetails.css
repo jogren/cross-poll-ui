@@ -6,6 +6,22 @@
   align-items: center;
 }
 
+.CenterDetails_section h1 {
+  color: white;
+  font-size: 30px;
+}
+
+form label {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add-item-container input {
+  font-size: 16px;
+}
+
+
 .add-item-container {
   margin-top: 20px;
   display: flex;
@@ -19,6 +35,10 @@
   height: 50px;
 }
 
+.submit-new-item:disabled {
+  background-color: #6C782A;
+}
+
 .plus-img {
   height: 30px;
 }
@@ -28,11 +48,13 @@
   justify-content: space-around;
   border: 1px solid black;
   width: 70%;
+  background-color: black;
+  opacity: 0.7;
 }
 
 .consumable-items-header,
 .nonConsumable-items-header,
-.item-container {
+.new-item {
   display: flex;
   justify-content: space-between;
   padding: 0px 15%;
@@ -47,4 +69,11 @@
 .nonConsumable-items-header p {
   font-size: 18px;
   font-weight: bold;
+  color: white;
+}
+
+.new-item p {
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
 }
